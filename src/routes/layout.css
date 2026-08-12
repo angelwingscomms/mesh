@@ -1,1 +1,27 @@
 @import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+	--color-ice: #f6f8fb;
+	--color-board: #ffffff;
+	--color-line: #dde4ee;
+	--color-ink: #0d1b2a;
+	--color-mute: #5b6b7f;
+	--color-brand: #123a6b;
+	--color-brand-2: #1d5fa8;
+	--color-accent: #c8102e;
+	--color-good: #0f8a4f;
+	--color-bad: #b3261e;
+	--radius-card: 0.75rem;
+	--spacing-gut: 1.25rem;
+	--font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', roboto, sans-serif;
+}
+
+@layer base {
+	html {
+		background-color: var(--color-ice);
+		color: var(--color-ink);
+		font-family: var(--font-sans);
+	}
+}
