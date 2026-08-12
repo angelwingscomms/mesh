@@ -8,6 +8,8 @@
 		"binding": "ASSETS",
 		"directory": ".svelte-kit/cloudflare"
 	},
+	"d1_databases": [{ "binding": "DB", "database_name": "mesh", "database_id": "local", "migrations_dir": "migrations" }],
+	"r2_buckets": [{ "binding": "R2", "bucket_name": "mesh" }],
 	"workers_dev": true,
 	"preview_urls": true
 }
