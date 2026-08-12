@@ -58,6 +58,12 @@ env -u CLOUDFLARE_API_TOKEN pnpm exec wrangler d1 execute mesh --local --command
 
 Use `--remote` instead of `--local` to promote an admin in production.
 
+## Seasons
+
+Standings, stat splits, and the importer all read the active season. Exactly one season is active at
+a time. Create one on `/admin/roster`, under "seasons"; adding a season makes it active and closes
+the previous one. Use "make active" and "close" on that table to switch seasons later.
+
 ## Checks
 
 ```bash

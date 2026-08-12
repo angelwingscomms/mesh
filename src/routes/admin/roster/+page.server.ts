@@ -2,6 +2,7 @@ import { fail } from '@sveltejs/kit';
 import { one, all, run, uid, now, active_season } from '#lib/db';
 import type { Actions, PageServerLoad } from './$types';
 
+type Season = { i: string; n: string; st: string; c: number };
 type Team = { i: string; n: string; ab: string; d: string };
 type Player = {
 	i: string;
@@ -32,6 +33,7 @@ export const load: PageServerLoad = async ({ platform }) => {
 	const se = await active_season(db);
 	return {
 		se,
+		s: await all<Season>(db, 'select i, n, st, c from se order by c desc'),
 		t: await all<Team>(db, 'select i, n, ab, d from t order by d, n'),
 		p: await all<Player>(
 			db,
@@ -48,7 +50,34 @@ export const load: PageServerLoad = async ({ platform }) => {
 
 const text = (form: FormData, k: string) => String(form.get(k) ?? '').trim();
 
+const activate = async (db: D1Database, i: string) => {
+	if (!i) return;
+	await run(db, "update se set st = 'c' where st = 'a'");
+	await run(db, "update se set st = 'a' where i = ?", i);
+};
+
 export const actions: Actions = {
+	season_new: async ({ request, platform }) => {
+		const db = platform!.env.DB;
+		const n = text(await request.formData(), 'n').toLowerCase();
+		if (!n) return fail(400, { m: 'name the season' });
+		if (await one(db, 'select i from se where n = ?', n))
+			return fail(400, { m: 'that season name is taken' });
+		const i = uid();
+		await run(db, "insert into se (i, n, st, c) values (?, ?, 'c', ?)", i, n, now());
+		await activate(db, i);
+	},
+
+	season_active: async ({ request, platform }) => {
+		const db = platform!.env.DB;
+		await activate(db, text(await request.formData(), 'i'));
+	},
+
+	season_close: async ({ request, platform }) => {
+		const db = platform!.env.DB;
+		await run(db, "update se set st = 'c' where i = ?", text(await request.formData(), 'i'));
+	},
+
 	team_new: async ({ request, platform }) => {
 		const db = platform!.env.DB;
 		const form = await request.formData();

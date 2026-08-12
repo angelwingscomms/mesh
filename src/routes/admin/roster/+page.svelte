@@ -3,6 +3,7 @@
 
 	let { data, form } = $props();
 
+	let season_form: HTMLFormElement;
 	let team_form: HTMLFormElement;
 	let player_form: HTMLFormElement;
 	let game_form: HTMLFormElement;
@@ -23,6 +24,56 @@
 {#if form?.m}
 	<p class="mt-2 text-sm text-bad">{form.m}</p>
 {/if}
+
+<h2 class="mt-8 text-sm font-semibold text-mute">seasons</h2>
+<p class="mt-1 text-sm text-mute">
+	standings, splits and imports all read the active season. exactly one season is active at a time.
+</p>
+<form
+	method="post"
+	action="?/season_new"
+	bind:this={season_form}
+	use:ctrlEnter={() => season_form.requestSubmit()}
+	class="mt-2 flex flex-wrap items-end gap-3 rounded-[--radius-card] border border-line bg-board p-4"
+>
+	<div>
+		<label for="sn" class="block text-sm text-mute">name</label>
+		<input id="sn" name="n" required placeholder="season 2" class="mt-1 {field}" />
+	</div>
+	<button type="submit" class={button}>add season and make it active</button>
+</form>
+
+<div class="mt-3 overflow-x-auto">
+	<table class="w-full text-sm">
+		<thead class="text-mute">
+			<tr><th class="text-left">season</th><th class="text-left">status</th><th></th></tr>
+		</thead>
+		<tbody>
+			{#each data.s as s (s.i)}
+				<tr class="border-b border-line">
+					<td class="py-2">{s.n}</td>
+					<td class={s.st === 'a' ? 'text-good' : 'text-mute'}>
+						{s.st === 'a' ? 'active' : 'closed'}
+					</td>
+					<td>
+						<form method="post" class="flex gap-3">
+							<input type="hidden" name="i" value={s.i} />
+							{#if s.st === 'a'}
+								<button type="submit" formaction="?/season_close" class="text-sm text-bad">
+									close
+								</button>
+							{:else}
+								<button type="submit" formaction="?/season_active" class={button}>
+									make active
+								</button>
+							{/if}
+						</form>
+					</td>
+				</tr>
+			{/each}
+		</tbody>
+	</table>
+</div>
 
 <h2 class="mt-8 text-sm font-semibold text-mute">teams</h2>
 <form

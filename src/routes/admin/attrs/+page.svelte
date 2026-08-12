@@ -4,8 +4,8 @@
 
 	let { data, form } = $props();
 
-	let snap_form: HTMLFormElement;
-	let award_form: HTMLFormElement;
+	let snap_form: HTMLFormElement | undefined = $state();
+	let award_form: HTMLFormElement | undefined = $state();
 
 	const latest = $derived(
 		data.a.length
@@ -43,7 +43,7 @@
 		method="post"
 		action="?/snap"
 		bind:this={snap_form}
-		use:ctrlEnter={() => snap_form.requestSubmit()}
+		use:ctrlEnter={() => snap_form?.requestSubmit()}
 		class="mt-6 rounded-[--radius-card] border border-line bg-board p-4"
 	>
 		<input type="hidden" name="p" value={data.p.i} />
@@ -74,7 +74,7 @@
 		method="post"
 		action="?/award"
 		bind:this={award_form}
-		use:ctrlEnter={() => award_form.requestSubmit()}
+		use:ctrlEnter={() => award_form?.requestSubmit()}
 		class="mt-6 flex flex-wrap items-end gap-3 rounded-[--radius-card] border border-line bg-board p-4"
 	>
 		<input type="hidden" name="p" value={data.p.i} />
