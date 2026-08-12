@@ -218,7 +218,7 @@
 	},
 	"ship": {
 		"s": "documentation, the polish pass, and the deploy",
-		"d": 0,
+		"d": 1,
 		"t": "bash plan/verify_tests.sh && pnpm test && pnpm check && pnpm build",
 		"c": {
 			"docs": {
@@ -235,7 +235,7 @@
 			},
 			"deploy": {
 				"s": "production on cloudflare workers. every wrangler command here needs the `env -u CLOUDFLARE_API_TOKEN` prefix — the exported token lacks the scopes and shadows the working OAuth login.\n\n1. create the real resources and copy the returned uuid into the `database_id` field of wrangler.jsonc, replacing the \"local\" placeholder:\n     env -u CLOUDFLARE_API_TOKEN pnpm exec wrangler d1 create mesh\n     env -u CLOUDFLARE_API_TOKEN pnpm exec wrangler r2 bucket create mesh\n2. migrate production:\n     env -u CLOUDFLARE_API_TOKEN pnpm exec wrangler d1 migrations apply mesh --remote\n3. the two secrets, as per-worker secrets:\n     env -u CLOUDFLARE_API_TOKEN pnpm exec wrangler secret put GOOGLE_ID\n     env -u CLOUDFLARE_API_TOKEN pnpm exec wrangler secret put GOOGLE_SECRET\n   these arrive on platform.env as plain strings, and get_secret already accepts both those and a secrets-store binding, so moving to a store later is a wrangler.jsonc change with no code change.\n4. add the deployed origin's /google to the authorised redirect uris in the google cloud console. if you cannot reach that console, finish the deploy and then `plan mesh deploy --block \"deployed, but the production /google redirect uri still needs adding in the google console\"`.\n5. deploy:\n     env -u CLOUDFLARE_API_TOKEN pnpm exec wrangler deploy\n6. promote the first admin against production once a real account has signed in:\n     env -u CLOUDFLARE_API_TOKEN pnpm exec wrangler d1 execute mesh --remote --command \"update u set r = 'a' where e = '<the admin email>'\"\n\nthe gate deploys, pulls the deployed url out of wrangler's own output, and fetches the live homepage. if wrangler is not authenticated it will say so — run `env -u CLOUDFLARE_API_TOKEN pnpm exec wrangler login`, or block if no browser is available.",
-				"d": 0,
+				"d": 1,
 				"v": "grep -qF '\"binding\": \"DB\"' wrangler.jsonc",
 				"t": "env -u CLOUDFLARE_API_TOKEN pnpm exec wrangler deploy > /tmp/mesh_deploy.log 2>&1 && grep -qF \"workers.dev\" /tmp/mesh_deploy.log && curl -sf \"$(grep -oE 'https://[a-z0-9.-]+workers\\.dev' /tmp/mesh_deploy.log | head -1)\" | grep -qiF \"standings\""
 			}

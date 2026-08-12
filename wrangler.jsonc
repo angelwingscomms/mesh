@@ -12,7 +12,7 @@
 		{
 			"binding": "DB",
 			"database_name": "mesh",
-			"database_id": "local",
+			"database_id": "3052ac98-86e6-4b5b-80b2-b8b6e446b7c3",
 			"migrations_dir": "migrations"
 		}
 	],
