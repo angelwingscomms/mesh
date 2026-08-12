@@ -229,7 +229,7 @@
 			},
 			"polish": {
 				"s": "the pass that makes it shippable. no new features — fix what these checks find.\n\n1. accessibility: every <img> has an alt attribute (decorative ones alt=\"\"), every form control has a <label for> or aria-label, every page has exactly one <h1>, and every interactive element is a real <button> or <a> and never a clickable <div>.\n2. responsive: every table is inside <div class=\"overflow-x-auto\">, every grid is single-column by default with sm:/md:/lg: breakpoints adding columns, and nothing has a fixed pixel width. the page body must never scroll sideways on a 360px screen.\n3. metadata: every page has an <svelte:head> with a <title> ending in \" · mesh\" and, on the player, team, game and news pages, a <meta name=\"description\"> built from that page's data.\n4. delete the scaffold leftovers: src/routes/demo if sv created one, and any unused file under src/lib.\n5. run `pnpm format` then `pnpm lint` and fix what lint reports. prettier will not touch src/**/*.test.ts or plan/ — that is what .prettierignore is for, and it must stay that way.\n\nthen run the gate. it re-proves the house rules mechanically: no style attributes, no <style> blocks, no {@html}, and a green build.",
-				"d": 0,
+				"d": 1,
 				"v": "test -f README.md",
 				"t": "bash plan/verify_tests.sh && ! grep -rqF \"style=\" src && ! grep -rqF \"<style\" src && ! grep -rqF \"{@html\" src && ! test -d src/routes/demo && grep -rqF \"svelte:head\" src/routes && grep -qF \"overflow-x-auto\" src/routes/standings/+page.svelte && pnpm format && pnpm lint && pnpm test && pnpm check && pnpm build"
 			},

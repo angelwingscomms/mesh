@@ -19,7 +19,9 @@ export const load: PageServerLoad = async ({ params, platform }) => {
 	const db = platform!.env.DB;
 	const p = await one<Player>(db, 'select i, n, j, ps, b, h, t from p where i = ?', params.i);
 	if (!p) error(404, 'no such player');
-	const t = p.t ? await one<{ n: string; ab: string }>(db, 'select n, ab from t where i = ?', p.t) : null;
+	const t = p.t
+		? await one<{ n: string; ab: string }>(db, 'select n, ab from t where i = ?', p.t)
+		: null;
 	const se = await active_season(db);
 	const lines = await all<Line>(
 		db,

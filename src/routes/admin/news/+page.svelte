@@ -29,7 +29,9 @@
 	<label for="ti" class="block text-sm text-mute">title</label>
 	<input id="ti" name="ti" required value={data.e?.ti ?? ''} class="mt-1 w-full {field}" />
 	<label for="bd" class="mt-3 block text-sm text-mute">body</label>
-	<textarea id="bd" name="bd" rows="14" required class="mt-1 w-full {field}">{data.e?.bd ?? ''}</textarea>
+	<textarea id="bd" name="bd" rows="14" required class="mt-1 w-full {field}"
+		>{data.e?.bd ?? ''}</textarea
+	>
 	<button type="submit" class="mt-3 {button}">save</button>
 	<span class="ml-2 text-sm text-mute">
 		ctrl+enter to submit. blank line between paragraphs. no html.

@@ -10,7 +10,10 @@
 
 <svelte:head>
 	<title>{data.t.n} · mesh</title>
-	<meta name="description" content="roster and season scoring for {data.t.n} in the mesh sim hockey league." />
+	<meta
+		name="description"
+		content="roster and season scoring for {data.t.n} in the mesh sim hockey league."
+	/>
 </svelte:head>
 
 <h1 class="text-2xl font-bold text-brand">{data.t.n}</h1>

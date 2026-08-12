@@ -34,7 +34,11 @@
 				<div class="mt-1 flex items-baseline gap-2">
 					<span class="text-2xl font-bold">{latest(key)}</span>
 					<span
-						class="text-sm {delta(key) > 0 ? 'text-good' : delta(key) < 0 ? 'text-bad' : 'text-mute'}"
+						class="text-sm {delta(key) > 0
+							? 'text-good'
+							: delta(key) < 0
+								? 'text-bad'
+								: 'text-mute'}"
 					>
 						{delta(key) > 0 ? '+' : ''}{delta(key)}
 					</span>

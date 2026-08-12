@@ -51,7 +51,9 @@ export const actions: Actions = {
 			'insert into aw (i, p, n, s, ty, d) values (?, ?, ?, ?, ?, ?)',
 			uid(),
 			String(form.get('p') ?? ''),
-			String(form.get('n') ?? '').trim().toLowerCase(),
+			String(form.get('n') ?? '')
+				.trim()
+				.toLowerCase(),
 			se?.i ?? null,
 			String(form.get('ty') ?? 'a'),
 			now()

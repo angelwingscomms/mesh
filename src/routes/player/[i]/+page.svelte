@@ -22,7 +22,8 @@
 	<title>{data.p.n} · mesh</title>
 	<meta
 		name="description"
-		content="{data.p.n}, {POS[data.p.ps]} for {data.t?.n ?? 'free agency'} in the mesh sim hockey league."
+		content="{data.p.n}, {POS[data.p.ps]} for {data.t?.n ??
+			'free agency'} in the mesh sim hockey league."
 	/>
 </svelte:head>
 

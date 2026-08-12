@@ -125,7 +125,14 @@
 					<td>
 						<form method="post" action="?/player_edit" class="flex gap-2">
 							<input type="hidden" name="i" value={p.i} />
-							<input name="j" type="number" min="1" max="99" value={p.j ?? ''} class="w-20 {field}" />
+							<input
+								name="j"
+								type="number"
+								min="1"
+								max="99"
+								value={p.j ?? ''}
+								class="w-20 {field}"
+							/>
 							<select name="ps" class={field}>
 								{#each POS as ps (ps)}<option value={ps} selected={ps === p.ps}>{ps}</option>{/each}
 							</select>
@@ -192,7 +199,11 @@
 <div class="mt-3 overflow-x-auto">
 	<table class="w-full text-sm">
 		<thead class="text-mute">
-			<tr><th class="text-left">date</th><th class="text-left">game</th><th class="text-left">result</th></tr>
+			<tr
+				><th class="text-left">date</th><th class="text-left">game</th><th class="text-left"
+					>result</th
+				></tr
+			>
 		</thead>
 		<tbody>
 			{#each data.g as g (g.i)}

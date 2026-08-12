@@ -102,6 +102,9 @@ export function standings(games: GameRow[]): TeamRow[] {
 	}
 	return [...table.values()].sort(
 		(x, y) =>
-			y.pt - x.pt || y.w - x.w || y.gf - y.ga - (x.gf - x.ga) || (x.t < y.t ? -1 : x.t > y.t ? 1 : 0)
+			y.pt - x.pt ||
+			y.w - x.w ||
+			y.gf - y.ga - (x.gf - x.ga) ||
+			(x.t < y.t ? -1 : x.t > y.t ? 1 : 0)
 	);
 }

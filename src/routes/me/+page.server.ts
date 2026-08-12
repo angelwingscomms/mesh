@@ -21,7 +21,9 @@ export const load: PageServerLoad = async ({ locals, platform }) => {
 	);
 	if (!p) return { t: null, l: [] as Recent[], e: [] as Pending[] };
 	return {
-		t: p.t ? await one<{ n: string; ab: string }>(db, 'select n, ab from t where i = ?', p.t) : null,
+		t: p.t
+			? await one<{ n: string; ab: string }>(db, 'select n, ab from t where i = ?', p.t)
+			: null,
 		l: await all<Recent>(
 			db,
 			"select gs.i as i, gs.gi as gi, g.dt as dt, gs.gl as gl, gs.a as a, gs.toi as toi, case when g.h = gs.ti then ah.ab else hh.ab end as opp from gs join g on g.i = gs.gi join t hh on hh.i = g.h join t ah on ah.i = g.a where gs.pi = ? and g.st = 'f' order by g.dt desc limit 5",

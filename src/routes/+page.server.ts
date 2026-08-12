@@ -21,7 +21,10 @@ export const load: PageServerLoad = async ({ platform }) => {
 			"select g.i as i, g.dt as dt, g.hg as hg, g.ag as ag, g.ot as ot, ht.ab as h, at.ab as a from g join t ht on ht.i = g.h join t at on at.i = g.a where g.s = ? and g.st = 'f' order by g.dt desc limit 5",
 			se.i
 		),
-		n: await all<Post>(db, 'select i, ti, sl, pb from ns where pb is not null order by pb desc limit 3'),
+		n: await all<Post>(
+			db,
+			'select i, ti, sl, pb from ns where pb is not null order by pb desc limit 3'
+		),
 		l: await all<Leader>(
 			db,
 			"select p.i as i, p.n as n, tm.ab as ab, sum(gs.gl) as gl, sum(gs.a) as a, sum(gs.gl) + sum(gs.a) as pt from gs join p on p.i = gs.pi join g on g.i = gs.gi left join t tm on tm.i = p.t where g.s = ? and g.st = 'f' group by p.i order by pt desc, gl desc limit 10",

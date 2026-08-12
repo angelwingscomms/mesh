@@ -35,10 +35,7 @@ const STATS = [
 export const load: PageServerLoad = async ({ platform }) => ({
 	fields: Object.keys(ALIASES),
 	required: REQUIRED,
-	h: await all<Log>(
-		platform!.env.DB,
-		'select i, f, n, st, er, c from im order by c desc limit 20'
-	)
+	h: await all<Log>(platform!.env.DB, 'select i, f, n, st, er, c from im order by c desc limit 20')
 });
 
 export const actions: Actions = {
@@ -188,19 +185,23 @@ export const actions: Actions = {
 				);
 				if (!g || g.hg !== null) continue;
 				const hg =
-					(await one<{ n: number }>(
-						db,
-						'select coalesce(sum(gl), 0) as n from gs where gi = ? and ti = ?',
-						gi,
-						g.h
-					))?.n ?? 0;
+					(
+						await one<{ n: number }>(
+							db,
+							'select coalesce(sum(gl), 0) as n from gs where gi = ? and ti = ?',
+							gi,
+							g.h
+						)
+					)?.n ?? 0;
 				const ag =
-					(await one<{ n: number }>(
-						db,
-						'select coalesce(sum(gl), 0) as n from gs where gi = ? and ti = ?',
-						gi,
-						g.a
-					))?.n ?? 0;
+					(
+						await one<{ n: number }>(
+							db,
+							'select coalesce(sum(gl), 0) as n from gs where gi = ? and ti = ?',
+							gi,
+							g.a
+						)
+					)?.n ?? 0;
 				await run(db, "update g set hg = ?, ag = ?, st = 'f' where i = ?", hg, ag, gi);
 			}
 

@@ -11,33 +11,33 @@ the same file: a goalie row simply fills the goalie columns and leaves the skate
 
 Four columns must be present. The import refuses to run without them.
 
-| Field | Accepted header spellings |
-| --- | --- |
+| Field    | Accepted header spellings        |
+| -------- | -------------------------------- |
 | `player` | player, name, playername, skater |
-| `team` | team, tm, club |
-| `date` | date, gamedate, gd |
-| `opp` | opp, opponent, vs, against |
+| `team`   | team, tm, club                   |
+| `date`   | date, gamedate, gd               |
+| `opp`    | opp, opponent, vs, against       |
 
 ## 3. Optional columns
 
 Everything else is optional. A missing column counts as zero.
 
-| Field | Accepted header spellings |
-| --- | --- |
-| `gl` goals | g, goals, gl |
-| `a` assists | a, assists, ast |
-| `pm` plus minus | +/-, plusminus, pm |
-| `pim` penalty minutes | pim, penaltyminutes |
-| `sog` shots on goal | s, shots, sog, shotsongoal |
-| `hit` hits | hits, hit, hts |
-| `blk` blocked shots | blk, blocks, blockedshots, bs |
-| `toi` time on ice | toi, timeonice |
-| `fow` faceoffs won | fow, faceoffswon, fw |
-| `fol` faceoffs lost | fol, faceoffslost, fl |
-| `sv` saves | sv, saves |
-| `ga` goals against | ga, goalsagainst |
-| `sa` shots against | sa, shotsagainst |
-| `so` shutouts | so, shutout, shutouts |
+| Field                 | Accepted header spellings     |
+| --------------------- | ----------------------------- |
+| `gl` goals            | g, goals, gl                  |
+| `a` assists           | a, assists, ast               |
+| `pm` plus minus       | +/-, plusminus, pm            |
+| `pim` penalty minutes | pim, penaltyminutes           |
+| `sog` shots on goal   | s, shots, sog, shotsongoal    |
+| `hit` hits            | hits, hit, hts                |
+| `blk` blocked shots   | blk, blocks, blockedshots, bs |
+| `toi` time on ice     | toi, timeonice                |
+| `fow` faceoffs won    | fow, faceoffswon, fw          |
+| `fol` faceoffs lost   | fol, faceoffslost, fl         |
+| `sv` saves            | sv, saves                     |
+| `ga` goals against    | ga, goalsagainst              |
+| `sa` shots against    | sa, shotsagainst              |
+| `so` shutouts         | so, shutout, shutouts         |
 
 Header matching ignores case, spaces and punctuation, so `Shots On Goal` and `shotsongoal` are the
 same column.
@@ -75,13 +75,13 @@ same column.
 
 ## 7. Troubleshooting
 
-| What you see | What it means | What to do |
-| --- | --- | --- |
-| `rows skipped` above zero | A player, team, or date in those rows did not match | Fix the name on `/admin/roster` or in the file, then upload again |
-| `map the required columns` | One of the four required dropdowns is empty | Pick the matching header and import again |
-| `that file has no rows` | The file has a header row and nothing else | Export again |
-| `that upload expired, start again` | The stored upload is gone | Upload the file again |
-| A `failed` row in the history table | The import threw | Read the error in the same row, fix the cause, upload again |
+| What you see                        | What it means                                       | What to do                                                        |
+| ----------------------------------- | --------------------------------------------------- | ----------------------------------------------------------------- |
+| `rows skipped` above zero           | A player, team, or date in those rows did not match | Fix the name on `/admin/roster` or in the file, then upload again |
+| `map the required columns`          | One of the four required dropdowns is empty         | Pick the matching header and import again                         |
+| `that file has no rows`             | The file has a header row and nothing else          | Export again                                                      |
+| `that upload expired, start again`  | The stored upload is gone                           | Upload the file again                                             |
+| A `failed` row in the history table | The import threw                                    | Read the error in the same row, fix the cause, upload again       |
 
 The import history sits at the bottom of `/admin/import`, and the five most recent runs also show
 on `/admin`.

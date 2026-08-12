@@ -4,7 +4,7 @@
 
 <svelte:head>
 	<title>{data.n.ti} · mesh</title>
-	<meta name="description" content="{data.n.bd.slice(0, 150)}" />
+	<meta name="description" content={data.n.bd.slice(0, 150)} />
 </svelte:head>
 
 <article class="max-w-prose">

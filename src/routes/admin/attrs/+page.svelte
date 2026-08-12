@@ -8,7 +8,9 @@
 	let award_form: HTMLFormElement;
 
 	const latest = $derived(
-		data.a.length ? (JSON.parse(data.a[0].v) as Record<string, number>) : ({} as Record<string, number>)
+		data.a.length
+			? (JSON.parse(data.a[0].v) as Record<string, number>)
+			: ({} as Record<string, number>)
 	);
 	const field = 'rounded-[--radius-card] border border-line px-3 py-2 text-sm';
 	const button = 'rounded-[--radius-card] bg-brand px-3 py-1.5 text-sm text-board';

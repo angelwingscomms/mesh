@@ -21,7 +21,9 @@
 <svelte:head><title>my profile · mesh</title></svelte:head>
 
 <h1 class="text-xl font-bold text-brand">profile</h1>
-<p class="mt-1 text-sm text-mute">every change is reviewed by a league admin before it goes live.</p>
+<p class="mt-1 text-sm text-mute">
+	every change is reviewed by a league admin before it goes live.
+</p>
 
 {#if form?.m && ERR[form.m]}
 	<p class="mt-4 text-sm text-bad">{ERR[form.m]}</p>
@@ -44,7 +46,10 @@
 			value={data.p?.n ?? ''}
 			class="mt-2 w-full rounded-[--radius-card] border border-line px-3 py-2 text-sm"
 		/>
-		<button type="submit" class="mt-3 rounded-[--radius-card] bg-brand px-3 py-1.5 text-sm text-board">
+		<button
+			type="submit"
+			class="mt-3 rounded-[--radius-card] bg-brand px-3 py-1.5 text-sm text-board"
+		>
 			request change
 		</button>
 		<span class="ml-2 text-sm text-mute">ctrl+enter to submit</span>
@@ -69,7 +74,10 @@
 			value={data.p?.j ?? ''}
 			class="mt-2 w-24 rounded-[--radius-card] border border-line px-3 py-2 text-sm"
 		/>
-		<button type="submit" class="mt-3 rounded-[--radius-card] bg-brand px-3 py-1.5 text-sm text-board">
+		<button
+			type="submit"
+			class="mt-3 rounded-[--radius-card] bg-brand px-3 py-1.5 text-sm text-board"
+		>
 			request change
 		</button>
 		<span class="ml-2 text-sm text-mute">ctrl+enter to submit</span>
@@ -91,7 +99,10 @@
 			class="mt-2 w-full rounded-[--radius-card] border border-line px-3 py-2 text-sm"
 			>{data.p?.b ?? ''}</textarea
 		>
-		<button type="submit" class="mt-3 rounded-[--radius-card] bg-brand px-3 py-1.5 text-sm text-board">
+		<button
+			type="submit"
+			class="mt-3 rounded-[--radius-card] bg-brand px-3 py-1.5 text-sm text-board"
+		>
 			request change
 		</button>
 		<span class="ml-2 text-sm text-mute">ctrl+enter to submit. blank line between paragraphs.</span>
@@ -108,7 +119,10 @@
 			<img src="/img/{data.p.h}" alt="" class="mt-2 h-24 w-24 rounded-full object-cover" />
 		{/if}
 		<input id="file" name="file" type="file" accept="image/*" class="mt-2 block text-sm" />
-		<button type="submit" class="mt-3 rounded-[--radius-card] bg-brand px-3 py-1.5 text-sm text-board">
+		<button
+			type="submit"
+			class="mt-3 rounded-[--radius-card] bg-brand px-3 py-1.5 text-sm text-board"
+		>
 			upload
 		</button>
 	</form>

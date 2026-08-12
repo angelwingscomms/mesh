@@ -17,9 +17,13 @@
 
 <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 	{#each cards as [label, n, href] (label)}
-		<a href={href} class="rounded-[--radius-card] border border-line bg-board p-4 hover:border-brand">
+		<a {href} class="rounded-[--radius-card] border border-line bg-board p-4 hover:border-brand">
 			<span class="block text-sm text-mute">{label}</span>
-			<span class="mt-1 block text-2xl font-bold {label === 'pending approvals' && n > 0 ? 'text-accent' : ''}">
+			<span
+				class="mt-1 block text-2xl font-bold {label === 'pending approvals' && n > 0
+					? 'text-accent'
+					: ''}"
+			>
 				{n}
 			</span>
 		</a>
@@ -31,7 +35,11 @@
 	<div class="mt-2 overflow-x-auto">
 		<table class="w-full text-sm">
 			<thead class="text-mute">
-				<tr><th class="text-left">file</th><th>rows</th><th>status</th><th class="text-left">error</th></tr>
+				<tr
+					><th class="text-left">file</th><th>rows</th><th>status</th><th class="text-left"
+						>error</th
+					></tr
+				>
 			</thead>
 			<tbody>
 				{#each data.i as r (r.i)}

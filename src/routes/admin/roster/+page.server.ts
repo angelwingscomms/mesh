@@ -3,9 +3,29 @@ import { one, all, run, uid, now, active_season } from '#lib/db';
 import type { Actions, PageServerLoad } from './$types';
 
 type Team = { i: string; n: string; ab: string; d: string };
-type Player = { i: string; n: string; j: number | null; ps: string; st: string; t: string | null; ab: string | null; u: string | null };
+type Player = {
+	i: string;
+	n: string;
+	j: number | null;
+	ps: string;
+	st: string;
+	t: string | null;
+	ab: string | null;
+	u: string | null;
+};
 type User = { i: string; e: string; n: string };
-type Game = { i: string; dt: number; st: string; ty: string; hg: number | null; ag: number | null; ot: string; rc: string | null; h: string; a: string };
+type Game = {
+	i: string;
+	dt: number;
+	st: string;
+	ty: string;
+	hg: number | null;
+	ag: number | null;
+	ot: string;
+	rc: string | null;
+	h: string;
+	a: string;
+};
 
 export const load: PageServerLoad = async ({ platform }) => {
 	const db = platform!.env.DB;
@@ -33,8 +53,7 @@ export const actions: Actions = {
 		const db = platform!.env.DB;
 		const form = await request.formData();
 		const ab = text(form, 'ab').toLowerCase();
-		if (await one(db, 'select i from t where ab = ?', ab))
-			return fail(400, { m: 'abbrev taken' });
+		if (await one(db, 'select i from t where ab = ?', ab)) return fail(400, { m: 'abbrev taken' });
 		await run(
 			db,
 			'insert into t (i, n, ab, d) values (?, ?, ?, ?)',
@@ -122,6 +141,11 @@ export const actions: Actions = {
 
 	game_recap: async ({ request, platform }) => {
 		const form = await request.formData();
-		await run(platform!.env.DB, 'update g set rc = ? where i = ?', text(form, 'rc'), text(form, 'i'));
+		await run(
+			platform!.env.DB,
+			'update g set rc = ? where i = ?',
+			text(form, 'rc'),
+			text(form, 'i')
+		);
 	}
 };

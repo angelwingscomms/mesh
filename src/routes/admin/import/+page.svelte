@@ -37,7 +37,11 @@
 </form>
 
 {#if form?.k}
-	<form method="post" action="?/commit" class="mt-6 rounded-[--radius-card] border border-line bg-board p-4">
+	<form
+		method="post"
+		action="?/commit"
+		class="mt-6 rounded-[--radius-card] border border-line bg-board p-4"
+	>
 		<input type="hidden" name="k" value={form.k} />
 		<input type="hidden" name="f" value={form.f} />
 		<h2 class="text-sm font-semibold text-mute">step 2 · map the columns</h2>

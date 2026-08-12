@@ -3,7 +3,15 @@ import { one, all, active_season } from '#lib/db';
 import type { PageServerLoad } from './$types';
 
 type Team = { i: string; n: string; ab: string; d: string };
-type Skater = { i: string; n: string; j: number | null; ps: string; gl: number; a: number; gp: number };
+type Skater = {
+	i: string;
+	n: string;
+	j: number | null;
+	ps: string;
+	gl: number;
+	a: number;
+	gp: number;
+};
 
 export const load: PageServerLoad = async ({ params, platform }) => {
 	const db = platform!.env.DB;

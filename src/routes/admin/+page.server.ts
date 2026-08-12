@@ -2,8 +2,7 @@ import { one, all } from '#lib/db';
 import type { PageServerLoad } from './$types';
 
 type Import = { i: string; f: string; n: number; st: string; er: string | null; c: number };
-const count = async (db: D1Database, sql: string) =>
-	(await one<{ n: number }>(db, sql))?.n ?? 0;
+const count = async (db: D1Database, sql: string) => (await one<{ n: number }>(db, sql))?.n ?? 0;
 
 export const load: PageServerLoad = async ({ platform }) => {
 	const db = platform!.env.DB;

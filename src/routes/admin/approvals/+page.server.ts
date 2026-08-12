@@ -32,13 +32,7 @@ export const actions: Actions = {
 		try {
 			next = apply_edit(player, row.f, row.v);
 		} catch {
-			await run(
-				db,
-				"update pe set st = 'f', rv = ?, rd = ? where i = ?",
-				locals.user!.i,
-				now(),
-				i
-			);
+			await run(db, "update pe set st = 'f', rv = ?, rd = ? where i = ?", locals.user!.i, now(), i);
 			return;
 		}
 		const column = { n: 'n', j: 'j', b: 'b', h: 'h' }[row.f];
