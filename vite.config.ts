@@ -4,6 +4,7 @@ import adapter from '@sveltejs/adapter-cloudflare';
 import { sveltekit } from '@sveltejs/kit/vite';
 
 export default defineConfig({
+	server: { port: 5175, strictPort: true },
 	plugins: [
 		tailwindcss(),
 		sveltekit({

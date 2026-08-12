@@ -32,7 +32,7 @@ GOOGLE_SECRET=...
 Get both from the Google Cloud Console, under a new OAuth client of type "web application". Add two
 authorised redirect URIs:
 
-- `http://localhost:5173/google`
+- `http://localhost:5175/google`
 - `https://<your production origin>/google`
 
 The callback path is `/google`. Nothing else works.
@@ -57,6 +57,12 @@ env -u CLOUDFLARE_API_TOKEN pnpm exec wrangler d1 execute mesh --local --command
 ```
 
 Use `--remote` instead of `--local` to promote an admin in production.
+
+## Development server
+
+`pnpm dev` serves on port **5175**, pinned with `strictPort` in `vite.config.ts`. The port is fixed
+because it is registered with Google as an authorised redirect URI, and a port that drifts breaks
+sign-in.
 
 ## Seasons
 
