@@ -1,18 +1,22 @@
-// See https://svelte.dev/docs/kit/types#app.d.ts
-// for information about these interfaces
+import type { SecretVal } from '#lib/secret';
+
 declare global {
 	namespace App {
+		interface Locals {
+			user: { i: string; e: string; n: string; r: string } | null;
+		}
+
 		interface Platform {
-			env: Env;
+			env: {
+				DB: D1Database;
+				R2: R2Bucket;
+				GOOGLE_ID: SecretVal;
+				GOOGLE_SECRET: SecretVal;
+			};
 			ctx: ExecutionContext;
 			caches: CacheStorage;
 			cf?: IncomingRequestCfProperties;
 		}
-
-		// interface Error {}
-		// interface Locals {}
-		// interface PageData {}
-		// interface PageState {}
 	}
 }
 
