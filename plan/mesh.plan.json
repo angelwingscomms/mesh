@@ -95,7 +95,7 @@
 	},
 	"public_site": {
 		"s": "every page a visitor sees without logging in",
-		"d": 0,
+		"d": 1,
 		"t": "bash plan/verify_tests.sh && pnpm test && pnpm check && pnpm build",
 		"c": {
 			"shell": {
@@ -124,19 +124,19 @@
 			},
 			"teams_page": {
 				"s": "/teams and /team/[ab] — the club index and the roster.\n\nCREATE src/routes/teams/+page.server.ts — select i, n, ab, d from t order by d, n. return { t: rows }.\n\nCREATE src/routes/teams/+page.svelte — a grid (grid gap-4 sm:grid-cols-2 lg:grid-cols-3) of cards, each the team name (bold), its abbrev uppercased in the markup only, and its division, linking to /team/<ab>.\n\nCREATE src/routes/team/[ab]/+page.server.ts:\n - the team by ab; `error(404, 'no such team')` when missing.\n - its roster with season totals, one query:\n   select p.i as i, p.n as n, p.j as j, p.ps as ps, coalesce(sum(gs.gl),0) as gl, coalesce(sum(gs.a),0) as a, coalesce(count(gs.i),0) as gp from p left join gs on gs.pi = p.i left join g on g.i = gs.gi and g.s = ? and g.st = 'f' where p.t = ? and p.st = 'a' group by p.i order by p.j\n - return { t, p: rows, se }.\n\nCREATE src/routes/team/[ab]/+page.svelte — team name as an h1, division under it, then the roster table: #, player (link to /player/<i>), pos, gp, g, a, pts. forwards, defence and goalies in that order by grouping on ps with `$derived` (c/l/r, then d, then g), each group under a small lowercase heading.\n\ndo not render the team colour column pr anywhere. tailwind cannot express a runtime hex without a style attribute, and style attributes are banned by the house rules — pr stays stored for a future logo/theme pass.",
-				"d": 0,
+				"d": 1,
 				"v": "test -f src/routes/schedule/+page.server.ts",
 				"t": "test -f src/routes/teams/+page.svelte && test -f src/routes/team/[ab]/+page.server.ts && grep -qF \"error(404\" src/routes/team/[ab]/+page.server.ts && ! grep -rqF \"style=\" src/routes && pnpm test && pnpm check"
 			},
 			"player_page": {
 				"s": "/player/[i] — the public card for one skater: who they are, what they have done, what they have won.\n\nCREATE src/routes/player/[i]/+page.server.ts:\n - the player joined to their team; `error(404, 'no such player')` when missing.\n - every stat line they have, with the game type and season attached:\n   select gs.*, g.ty as ty, g.s as s from gs join g on g.i = gs.gi where gs.pi = ? and g.st = 'f'\n - build three splits with `totals()` from #lib/stats: regular season of the ACTIVE season (ty 'r' and s = active), playoffs of the active season (ty 'p'), and career (every row). return { p, t, s: { r, p: po, c }, w, at }.\n   name the playoff key `p` inside `s` but keep the player under the top-level `p` — they are different objects at different depths, do not flatten them.\n - w: select n, ty, d from aw where p = ? order by d desc\n - at: the most recent attribute snapshot only — select v, d from at where p = ? order by d desc limit 1 — parsed with JSON.parse.\n\nCREATE src/routes/player/[i]/+page.svelte:\n - header: the headshot when p.h is set (<img src=\"/img/{p.h}\" alt=\"\" class=\"h-24 w-24 rounded-full object-cover\" />) else a bg-line placeholder circle holding the jersey number; then name as h1, and a muted line \"#<j> · <position label> · <team name>\". map ps to a label with a local record: c centre, l left wing, r right wing, d defence, g goalie.\n - a splits table: three rows (regular, playoffs, career) by gp, g, a, pts, +/-, pim, sog, hits, blk. when p.ps === 'g' show sv, ga, sa, sv% (toFixed(3)) and gaa (toFixed(2)) instead.\n - \"attributes\" — the latest snapshot as a simple two-column list using ATTRS from #lib/attrs for the labels and order; a muted \"no ratings yet\" when there is no snapshot.\n - \"awards\" — the aw rows, or a muted \"none yet\".",
-				"d": 0,
+				"d": 1,
 				"v": "test -f src/lib/attrs.ts",
 				"t": "test -f src/routes/player/[i]/+page.server.ts && grep -qF \"totals(\" src/routes/player/[i]/+page.server.ts && grep -qF \"from aw where p = ?\" src/routes/player/[i]/+page.server.ts && grep -qF \"alt=\" src/routes/player/[i]/+page.svelte && pnpm test && pnpm check"
 			},
 			"news_page": {
 				"s": "/news and /news/[sl] — league news, published posts only.\n\nCREATE src/routes/news/+page.server.ts — select i, ti, sl, pb from ns where pb is not null order by pb desc. return { n: rows }.\n\nCREATE src/routes/news/+page.svelte — a stacked list; each item is the title as a link to /news/<sl> plus the published date, muted. empty state: lowercase \"no news yet\".\n\nCREATE src/routes/news/[sl]/+page.server.ts — select ns.*, u.n as an from ns join u on u.i = ns.u where ns.sl = ? and ns.pb is not null; `error(404, 'no such post')` otherwise. the `pb is not null` clause is the whole draft feature — a draft must not be readable by url.\n\nCREATE src/routes/news/[sl]/+page.svelte — title as h1, byline and date muted, then `n.bd.split('\\n\\n')` as one <p> per paragraph in a max-w-prose column. never {@html}.",
-				"d": 0,
+				"d": 1,
 				"v": "test -f src/routes/player/[i]/+page.server.ts",
 				"t": "test -f src/routes/news/+page.server.ts && test -f src/routes/news/[sl]/+page.server.ts && grep -qF \"pb is not null\" src/routes/news/[sl]/+page.server.ts && ! grep -rqF \"{@html\" src && pnpm test && pnpm check"
 			}
