@@ -25,6 +25,7 @@
 </svelte:head>
 
 <header data-reveal use:reveal>
+	<h1 class="sr-only">{data.a?.n} at {data.h?.n}, {long_day(data.g.dt)}</h1>
 	<p class="label">{long_day(data.g.dt)} · {data.g.ty === 'p' ? 'playoffs' : 'regular season'}</p>
 
 	<div class="mt-6 divide-y divide-line border-y border-ink">
