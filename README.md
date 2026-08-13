@@ -64,6 +64,34 @@ Use `--remote` instead of `--local` to promote an admin in production.
 because it is registered with Google as an authorised redirect URI, and a port that drifts breaks
 sign-in.
 
+## Demo league
+
+The site ships with a generated demo season so it is never empty while you set the real league up.
+`scripts/demo.mjs` writes `scripts/demo.sql` from a fixed seed: 8 clubs in two divisions, 80
+players, a single round robin of 28 played games with full box scores, 8 fixtures ahead, three
+dated rating snapshots per player, awards, recaps, and news.
+
+```bash
+node scripts/demo.mjs                                                     # regenerate the sql
+env -u CLOUDFLARE_API_TOKEN pnpm exec wrangler d1 execute mesh --local --file scripts/demo.sql
+env -u CLOUDFLARE_API_TOKEN pnpm exec wrangler d1 execute mesh --remote --file scripts/demo.sql
+```
+
+Every demo row has an id starting `d_`, so removing it never touches anything a real league has
+entered:
+
+```sql
+delete from gs where i like 'd_%';
+delete from at where i like 'd_%';
+delete from aw where i like 'd_%';
+delete from pe where i like 'd_%';
+delete from g  where i like 'd_%';
+delete from p  where i like 'd_%';
+delete from t  where i like 'd_%';
+delete from ns where i like 'd_%';
+delete from u  where i = 'd_u_office';
+```
+
 ## Seasons
 
 Standings, stat splits, and the importer all read the active season. Exactly one season is active at
