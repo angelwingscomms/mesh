@@ -52,7 +52,7 @@
 	skip to content
 </a>
 
-<header class="stands">
+<header class="stands sticky top-0 z-50">
 	<div
 		class="mx-auto flex max-w-[1400px] flex-wrap items-center gap-x-8 gap-y-4 px-5 py-4 sm:px-8 lg:px-12"
 	>
@@ -103,8 +103,12 @@
 	</div>
 </header>
 
-<main id="main" class="mx-auto max-w-[1400px] px-5 pt-12 pb-32 sm:px-8 lg:px-12">
-	{@render children()}
+<!-- main spans the viewport so overflow-x: clip trims the hero cut at the true screen edge;
+     clipping on body would propagate to the viewport and defeat itself -->
+<main id="main" class="overflow-x-clip">
+	<div class="mx-auto max-w-[1400px] px-5 pt-12 pb-32 sm:px-8 lg:px-12">
+		{@render children()}
+	</div>
 </main>
 
 <footer class="stands overflow-hidden">
