@@ -61,7 +61,7 @@
 								<span
 									class="numeral text-lg uppercase transition-colors duration-300 group-hover:text-brand"
 								>
-									{ab(g.a)} <span class="text-mute">@</span>
+									{ab(g.a)} <span class="mx-1 text-mute">@</span>
 									{ab(g.h)}
 								</span>
 								<span class="numeral text-lg tabular-nums">

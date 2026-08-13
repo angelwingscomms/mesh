@@ -1,17 +1,18 @@
 <script lang="ts">
+	import { day } from '#lib/fmt';
 	import { ctrlEnter } from '#lib/actions';
 
 	let { data, form } = $props();
 
 	let editor: HTMLFormElement;
 
-	const field = 'rounded-[--radius-card] border border-line px-3 py-2 text-sm';
-	const button = 'rounded-[--radius-card] bg-brand px-3 py-1.5 text-sm text-board';
+	const field = 'field';
+	const button = 'btn';
 </script>
 
 <svelte:head><title>news · mesh admin</title></svelte:head>
 
-<h1 class="text-xl font-bold text-brand">news</h1>
+<h1 class="title">news</h1>
 {#if form?.m}
 	<p class="mt-2 text-sm text-bad">{form.m}</p>
 {/if}
@@ -21,14 +22,14 @@
 	action="?/save"
 	bind:this={editor}
 	use:ctrlEnter={() => editor.requestSubmit()}
-	class="mt-6 rounded-[--radius-card] border border-line bg-board p-4"
+	class="card mt-6"
 >
 	{#if data.e}
 		<input type="hidden" name="i" value={data.e.i} />
 	{/if}
-	<label for="ti" class="block text-sm text-mute">title</label>
+	<label for="ti" class="label block">title</label>
 	<input id="ti" name="ti" required value={data.e?.ti ?? ''} class="mt-1 w-full {field}" />
-	<label for="bd" class="mt-3 block text-sm text-mute">body</label>
+	<label for="bd" class="label mt-3 block">body</label>
 	<textarea id="bd" name="bd" rows="14" required class="mt-1 w-full {field}"
 		>{data.e?.bd ?? ''}</textarea
 	>
@@ -38,25 +39,25 @@
 	</span>
 </form>
 
-<h2 class="mt-8 text-sm font-semibold text-mute">posts</h2>
+<div class="rule mt-16"><h2 class="head">posts</h2></div>
 {#if data.n.length}
-	<div class="mt-2 overflow-x-auto">
-		<table class="w-full text-sm">
-			<thead class="text-mute">
+	<div class="sheet mt-4">
+		<table class="data">
+			<thead>
 				<tr><th class="text-left">title</th><th class="text-left">status</th><th></th></tr>
 			</thead>
 			<tbody>
 				{#each data.n as n (n.i)}
-					<tr class="border-b border-line">
+					<tr>
 						<td class="py-2"><a href="/admin/news?i={n.i}" class="hover:text-brand">{n.ti}</a></td>
 						<td class="text-mute">
-							{n.pb ? new Date(n.pb).toLocaleDateString() : 'draft'}
+							{n.pb ? day(n.pb) : 'draft'}
 						</td>
 						<td>
 							<form method="post" class="flex gap-3">
 								<input type="hidden" name="i" value={n.i} />
 								{#if n.pb}
-									<button type="submit" formaction="?/unpublish" class="text-sm text-bad">
+									<button type="submit" formaction="?/unpublish" class="btn-quiet">
 										unpublish
 									</button>
 									<a href="/news/{n.sl}" class="text-sm text-brand hover:text-brand-2">view</a>

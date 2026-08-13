@@ -63,7 +63,7 @@
 							<li>
 								<a href="/game/{g.i}" class="flex items-baseline justify-between gap-4 py-1">
 									<span class="numeral uppercase"
-										>{ab(g.a)} <span class="text-mute">@</span> {ab(g.h)}</span
+										>{ab(g.a)} <span class="mx-1 text-mute">@</span> {ab(g.h)}</span
 									>
 									<span class="label">{day(g.dt)}</span>
 								</a>

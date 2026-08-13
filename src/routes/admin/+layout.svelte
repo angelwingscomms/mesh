@@ -1,14 +1,33 @@
 <script lang="ts">
+	import { page } from '$app/state';
+
 	let { children } = $props();
+
+	const NAV = [
+		['/admin', 'overview'],
+		['/admin/roster', 'roster'],
+		['/admin/attrs', 'ratings'],
+		['/admin/approvals', 'approvals'],
+		['/admin/news', 'news'],
+		['/admin/import', 'import']
+	];
 </script>
 
-<nav class="flex flex-wrap gap-4 border-b border-line pb-3 text-sm">
-	<a href="/admin" class="hover:text-brand">overview</a>
-	<a href="/admin/roster" class="hover:text-brand">roster</a>
-	<a href="/admin/attrs" class="hover:text-brand">ratings</a>
-	<a href="/admin/approvals" class="hover:text-brand">approvals</a>
-	<a href="/admin/news" class="hover:text-brand">news</a>
-	<a href="/admin/import" class="hover:text-brand">import</a>
+<nav
+	aria-label="league office"
+	class="stands flex flex-wrap items-center gap-x-7 gap-y-3 px-5 py-4 text-sm"
+>
+	<span class="label text-board/45">league office</span>
+	{#each NAV as [href, name] (href)}
+		<a
+			{href}
+			class="cut text-board/70 hover:text-board"
+			aria-current={page.url.pathname === href ? 'page' : undefined}
+			class:text-board={page.url.pathname === href}
+		>
+			{name}
+		</a>
+	{/each}
 </nav>
 
-<div class="mt-6">{@render children()}</div>
+<div class="mt-12">{@render children()}</div>

@@ -27,11 +27,13 @@
 <header data-reveal use:reveal>
 	<p class="label">{long_day(data.g.dt)} · {data.g.ty === 'p' ? 'playoffs' : 'regular season'}</p>
 
-	<div class="mt-6 grid gap-6 border-y border-ink py-8 sm:grid-cols-2">
+	<div class="mt-6 divide-y divide-line border-y border-ink">
 		{#each sides as side (side.t?.i)}
 			<a
 				href="/team/{side.t?.ab}"
-				class="group flex items-center justify-between gap-6 {won(side.goals) ? '' : 'text-mute'}"
+				class="group flex items-center justify-between gap-6 py-6 {won(side.goals)
+					? ''
+					: 'text-mute'}"
 			>
 				<span>
 					<span

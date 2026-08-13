@@ -23,7 +23,11 @@ export const load: PageServerLoad = async ({ locals, platform }) => {
 	const p = await my_player(db, locals.user!.i);
 	if (!p) return { e: [] as Pending[] };
 	return {
-		e: await all<Pending>(db, "select i, f, v, c from pe where p = ? and st = 'r'", p.i)
+		e: await all<Pending>(
+			db,
+			"select i, f, v, c from pe where p = ? and st = 'r' order by c desc",
+			p.i
+		)
 	};
 };
 
