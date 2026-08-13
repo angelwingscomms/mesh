@@ -8,7 +8,7 @@
 	};
 </script>
 
-<svelte:head><title>{page.status} · mesh</title></svelte:head>
+<svelte:head><title>error · mesh</title></svelte:head>
 
 <section class="relative py-20">
 	<Rink
