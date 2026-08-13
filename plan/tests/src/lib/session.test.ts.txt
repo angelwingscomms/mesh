@@ -1,5 +1,12 @@
 import { describe, it, expect } from 'vitest';
-import { new_id, cookie_str, clear_cookie, is_expired, is_admin, SESSION_MS } from './session';
+import {
+	new_id,
+	cookie_opts,
+	is_expired,
+	is_admin,
+	SESSION_MS,
+	SESSION_COOKIE
+} from './session';
 
 describe('new_id', () => {
 	it('never repeats', () => {
@@ -7,19 +14,27 @@ describe('new_id', () => {
 	});
 });
 
-describe('cookie_str', () => {
+describe('cookie_opts', () => {
+	it('is named s', () => {
+		expect(SESSION_COOKIE).toBe('s');
+	});
+
 	it('builds a hardened cookie', () => {
-		expect(cookie_str('abc', 600, true)).toBe(
-			's=abc; Path=/; HttpOnly; SameSite=Lax; Max-Age=600; Secure'
-		);
+		expect(cookie_opts(true)).toEqual({
+			path: '/',
+			httpOnly: true,
+			sameSite: 'lax',
+			maxAge: SESSION_MS / 1000,
+			secure: true
+		});
 	});
 
-	it('drops Secure on plain http so local dev can log in', () => {
-		expect(cookie_str('abc', 600, false)).toBe('s=abc; Path=/; HttpOnly; SameSite=Lax; Max-Age=600');
+	it('drops secure on plain http so local dev can sign in', () => {
+		expect(cookie_opts(false).secure).toBe(false);
 	});
 
-	it('clears by expiring immediately', () => {
-		expect(clear_cookie(true)).toBe('s=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0; Secure');
+	it('keeps SameSite lax so the google redirect does not drop the cookie', () => {
+		expect(cookie_opts(true).sameSite).toBe('lax');
 	});
 });
 

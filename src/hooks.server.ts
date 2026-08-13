@@ -1,11 +1,11 @@
 import { redirect, error } from '@sveltejs/kit';
-import { is_expired, is_admin } from '#lib/session';
+import { is_expired, is_admin, SESSION_COOKIE } from '#lib/session';
 import { one } from '#lib/db';
 import type { Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	event.locals.user = null;
-	const s = event.cookies.get('s');
+	const s = event.cookies.get(SESSION_COOKIE);
 	if (s && event.platform) {
 		const row = await one<{ x: number; i: string; e: string; n: string; r: string }>(
 			event.platform.env.DB,

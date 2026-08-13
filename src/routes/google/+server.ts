@@ -1,10 +1,10 @@
 import { redirect, error } from '@sveltejs/kit';
 import { get_secret } from '#lib/secret';
-import { new_id, cookie_str, SESSION_MS } from '#lib/session';
+import { new_id, cookie_opts, SESSION_COOKIE, SESSION_MS } from '#lib/session';
 import { one, run, now } from '#lib/db';
 import type { RequestHandler } from './$types';
 
-export const GET: RequestHandler = async ({ url, platform, cookies, setHeaders }) => {
+export const GET: RequestHandler = async ({ url, platform, cookies }) => {
 	const code = url.searchParams.get('code');
 	if (!code || url.searchParams.get('state') !== cookies.get('st')) error(400, 'bad login');
 	cookies.delete('st', { path: '/' });
@@ -44,6 +44,6 @@ export const GET: RequestHandler = async ({ url, platform, cookies, setHeaders }
 	}
 	const s = new_id();
 	await run(db, 'insert into ss (i, u, x) values (?, ?, ?)', s, u.i, now() + SESSION_MS);
-	setHeaders({ 'set-cookie': cookie_str(s, SESSION_MS / 1000, url.protocol === 'https:') });
+	cookies.set(SESSION_COOKIE, s, cookie_opts(url.protocol === 'https:'));
 	redirect(303, '/me');
 };
