@@ -20,5 +20,8 @@ export const GET: RequestHandler = async ({ url, platform, cookies }) => {
 		state,
 		prompt: 'select_account'
 	});
-	redirect(302, 'https://accounts.google.com/o/oauth2/v2/auth?' + q.toString());
+	// kit refuses cross-origin redirects unless the destination is named explicitly
+	redirect(302, 'https://accounts.google.com/o/oauth2/v2/auth?' + q.toString(), {
+		external: true
+	});
 };
