@@ -1,0 +1,239 @@
+$ vite dev
+8:17:46 AM [vite] (ssr) connected.
+8:17:46 AM [vite] (client) Forced re-optimization of dependencies
+
+  VITE v8.2.1  ready in 4849 ms
+
+  ➜  Local:   http://localhost:5175/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+Using secrets defined in .env
+Using secrets defined in .env
+*** Fatal uncaught kj::Exception: workerd/util/sqlite.c++:844: failed: SENTRY_DO SQLite failed; NOSENTRY database is locked: SQLITE_BUSY (extended: SQLITE_BUSY_RECOVERY)
+stack: /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@33af68b /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@2010925 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@206e2bc /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@206dc76 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@202b09c /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@202aaf2 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1fe0a32 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@20680bf /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@206b415 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1fb1339 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@5432855 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@5432d78 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@543082e /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@543062e /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1f98d17 /usr/lib/libc.so.6@2abfb /usr/lib/libc.so.6@2acb4 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1f98024
+MiniflareCoreError [ERR_RUNTIME_FAILURE]: The Workers runtime failed to start. There was likely a problem with the workerd binary or your configuration.
+Runtime stderr:
+*** Fatal uncaught kj::Exception: workerd/util/sqlite.c++:844: failed: SENTRY_DO SQLite failed; NOSENTRY database is locked: SQLITE_BUSY (extended: SQLITE_BUSY_RECOVERY)
+stack: /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@33af68b /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@2010925 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@206e2bc /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@206dc76 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@202b09c /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@202aaf2 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1fe0a32 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@20680bf /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@206b415 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1fb1339 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@5432855 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@5432d78 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@543082e /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@543062e /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1f98d17 /usr/lib/libc.so.6@2abfb /usr/lib/libc.so.6@2acb4 /home/ed/i/mesh/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260804.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1f98024
+Error: D1_ERROR: no such table: se: SQLITE_ERROR
+    at async one (src/lib/db.ts:6:10)
+    at async load (src/routes/+page.server.ts:11:13)
+Error: no such table: se: SQLITE_ERROR
+
+[500] GET /
+[404] GET /favicon.ico
+Error: D1_ERROR: no such table: se: SQLITE_ERROR
+    at async one (src/lib/db.ts:6:10)
+    at async load (src/routes/+page.server.ts:11:13)
+Error: no such table: se: SQLITE_ERROR
+
+[500] GET /
+Error: D1_ERROR: no such table: se: SQLITE_ERROR
+    at async one (src/lib/db.ts:6:10)
+    at async load (src/routes/+page.server.ts:11:13)
+Error: no such table: se: SQLITE_ERROR
+
+[200] GET /__data.json?x-sveltekit-trailing-slash=1&x-sveltekit-invalidated=11
+[200] GET /
+[200] GET /standings
+[200] GET /schedule
+[200] GET /teams
+[200] GET /news
+[200] GET /login
+[303] GET /me
+[403] GET /admin
+8:36:42 AM [vite] (client) hmr update /src/routes/layout.css
+8:36:42 AM [vite] (ssr) page reload src/routes/layout.css
+8:36:42 AM [vite] (ssr) program reload
+[200] GET /
+8:39:33 AM [vite] (client) hmr update /src/routes/layout.css
+8:39:33 AM [vite] (ssr) page reload src/lib/actions.ts
+8:40:12 AM [vite] (client) hmr update /src/routes/layout.css
+8:40:12 AM [vite] (ssr) page reload src/routes/layout.css
+8:40:12 AM [vite] (ssr) program reload
+8:41:07 AM [vite] (client) hmr update /src/routes/layout.css
+8:41:07 AM [vite] (ssr) page reload src/routes/+layout.server.ts
+8:41:55 AM [vite] (client) hmr update /src/routes/+layout.svelte, /src/routes/layout.css
+8:41:55 AM [vite] (ssr) page reload src/routes/+layout.svelte
+8:41:55 AM [vite] (ssr) program reload
+8:42:56 AM [vite] (ssr) program reload
+8:42:56 AM [vite] (client) page reload src/app.html
+8:42:56 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+[200] GET /
+8:43:35 AM [vite] (client) hmr update /src/routes/+error.svelte, /src/routes/layout.css
+8:43:35 AM [vite] (ssr) page reload src/routes/+error.svelte
+8:43:35 AM [vite] (ssr) program reload
+8:45:25 AM [vite] (client) hmr update /src/routes/layout.css
+8:45:25 AM [vite] (ssr) page reload src/routes/+page.server.ts
+8:46:19 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/routes/layout.css
+8:46:19 AM [vite] (ssr) page reload src/routes/+page.svelte
+8:46:56 AM [vite] (client) hmr update /src/routes/layout.css
+[200] GET /
+8:47:27 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/routes/layout.css
+8:47:27 AM [vite] (ssr) page reload src/routes/+page.svelte
+8:47:27 AM [vite] (ssr) program reload
+8:48:18 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+8:48:18 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+8:48:18 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+8:48:18 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+8:48:18 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+8:48:18 AM [vite] (ssr) page reload .svelte-kit/generated/shared/error-template.js
+8:48:18 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+[200] GET /
+8:49:12 AM [vite] (client) hmr update /src/routes/layout.css
+8:49:12 AM [vite] (ssr) page reload src/routes/+page.server.ts
+8:49:12 AM [vite] (ssr) program reload
+8:50:29 AM [vite] (client) hmr update /src/routes/layout.css
+8:50:29 AM [vite] (ssr) page reload src/routes/+page.server.ts
+8:50:29 AM [vite] (ssr) program reload
+8:50:40 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+8:50:40 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+8:50:40 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+8:50:40 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+8:50:40 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+8:50:40 AM [vite] (ssr) page reload .svelte-kit/generated/shared/error-template.js
+8:50:40 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+[304] GET /
+[200] GET /
+[200] GET /
+[304] GET /
+[304] GET /
+9:01:35 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/routes/layout.css
+9:01:35 AM [vite] (ssr) page reload src/routes/+page.svelte
+9:01:35 AM [vite] (ssr) program reload
+9:02:41 AM [vite] (client) hmr update /src/routes/layout.css
+9:02:41 AM [vite] (ssr) page reload src/routes/standings/+page.server.ts
+9:03:54 AM [vite] (client) hmr update /src/routes/layout.css
+9:03:54 AM [vite] (ssr) page reload src/routes/standings/+page.svelte
+9:04:57 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+[200] GET /
+[200] GET /
+9:07:32 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+9:07:32 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+9:07:32 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+9:07:32 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+9:07:32 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+9:07:32 AM [vite] (ssr) page reload .svelte-kit/generated/shared/error-template.js
+9:07:32 AM [vite] (ssr) program reload
+9:07:32 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+9:07:32 AM [vite] (ssr) program reload
+TypeError: Cannot read properties of null (reading 'function')
+    at Module.push_element (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/dev.js:59:25)
+    at eval (/home/ed/i/mesh/src/routes/+layout.svelte:44:44)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at eval (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/index.js:87:12)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at Renderer.head (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:115:8)
+    at Module.head (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/index.js:85:11)
+    at eval (/home/ed/i/mesh/src/routes/+layout.svelte:41:3)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at Renderer.component (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:319:22)
+Error: Can only read 'page.status' on the server during rendering (not in e.g. `load` functions), as it is bound to the current request via component context. This prevents state from leaking between users. For more information, see https://svelte.dev/docs/kit/state-management#avoid-shared-state-on-the-server
+    at context_dev (/home/ed/i/mesh/node_modules/.pnpm/@sveltejs+kit@3.0.0-next.18_@sveltejs+vite-plugin-svelte@7.3.0_svelte@5.56.8_@typescrip_8cbd71102e2a2feb089ebbaadcc85fc6/node_modules/@sveltejs/kit/src/runtime/app/state/server.js:13:9)
+    at Object.get status (/home/ed/i/mesh/node_modules/.pnpm/@sveltejs+kit@3.0.0-next.18_@sveltejs+vite-plugin-svelte@7.3.0_svelte@5.56.8_@typescrip_8cbd71102e2a2feb089ebbaadcc85fc6/node_modules/@sveltejs/kit/src/runtime/app/state/server.js:43:17)
+    at eval (/home/ed/i/mesh/src/routes/+error.svelte:11:27)
+    at eval (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:411:4)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at Renderer.title (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:409:8)
+    at eval (/home/ed/i/mesh/src/routes/+error.svelte:7:8)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at eval (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/index.js:87:12)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+TypeError: Cannot read properties of null (reading 'function')
+    at Module.push_element (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/dev.js:59:25)
+    at eval (/home/ed/i/mesh/src/routes/+layout.svelte:44:44)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at eval (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/index.js:87:12)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at Renderer.head (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:115:8)
+    at Module.head (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/index.js:85:11)
+    at eval (/home/ed/i/mesh/src/routes/+layout.svelte:41:3)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at Renderer.component (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:319:22)
+[500] GET /
+[404] GET /favicon.ico
+[304] GET /
+9:08:56 AM [vite] (client) hmr update /src/routes/layout.css
+9:08:56 AM [vite] (ssr) page reload src/routes/schedule/+page.server.ts
+[200] GET /
+9:10:07 AM [vite] (client) hmr update /src/routes/layout.css
+9:10:07 AM [vite] (ssr) page reload src/routes/schedule/+page.svelte
+9:11:23 AM [vite] (client) hmr update /src/routes/layout.css
+9:11:23 AM [vite] (ssr) page reload src/routes/game/[i]/+page.server.ts
+9:12:45 AM [vite] (client) hmr update /src/routes/layout.css
+9:12:45 AM [vite] (ssr) page reload src/routes/game/[i]/+page.svelte
+9:14:05 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+9:14:05 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+9:14:05 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+9:14:05 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+9:14:05 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+9:14:05 AM [vite] (ssr) page reload .svelte-kit/generated/shared/error-template.js
+9:14:05 AM [vite] (ssr) program reload
+9:14:07 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+9:14:07 AM [vite] (ssr) program reload
+TypeError: Cannot read properties of null (reading 'function')
+    at Module.push_element (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/dev.js:59:25)
+    at eval (/home/ed/i/mesh/src/routes/+layout.svelte:44:44)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at eval (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/index.js:87:12)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at Renderer.head (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:115:8)
+    at Module.head (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/index.js:85:11)
+    at eval (/home/ed/i/mesh/src/routes/+layout.svelte:41:3)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at Renderer.component (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:319:22)
+TypeError: Cannot read properties of null (reading 'function')
+    at Module.push_element (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/dev.js:59:25)
+    at eval (/home/ed/i/mesh/src/routes/+layout.svelte:44:44)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at eval (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/index.js:87:12)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at Renderer.head (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:115:8)
+    at Module.head (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/index.js:85:11)
+    at eval (/home/ed/i/mesh/src/routes/+layout.svelte:41:3)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at Renderer.component (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:319:22)
+Error: Can only read 'page.status' on the server during rendering (not in e.g. `load` functions), as it is bound to the current request via component context. This prevents state from leaking between users. For more information, see https://svelte.dev/docs/kit/state-management#avoid-shared-state-on-the-server
+    at context_dev (/home/ed/i/mesh/node_modules/.pnpm/@sveltejs+kit@3.0.0-next.18_@sveltejs+vite-plugin-svelte@7.3.0_svelte@5.56.8_@typescrip_8cbd71102e2a2feb089ebbaadcc85fc6/node_modules/@sveltejs/kit/src/runtime/app/state/server.js:13:9)
+    at Object.get status (/home/ed/i/mesh/node_modules/.pnpm/@sveltejs+kit@3.0.0-next.18_@sveltejs+vite-plugin-svelte@7.3.0_svelte@5.56.8_@typescrip_8cbd71102e2a2feb089ebbaadcc85fc6/node_modules/@sveltejs/kit/src/runtime/app/state/server.js:43:17)
+    at eval (/home/ed/i/mesh/src/routes/+error.svelte:11:27)
+    at eval (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:411:4)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at Renderer.title (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:409:8)
+    at eval (/home/ed/i/mesh/src/routes/+error.svelte:7:8)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at eval (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/index.js:87:12)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+Error: Can only read 'page.status' on the server during rendering (not in e.g. `load` functions), as it is bound to the current request via component context. This prevents state from leaking between users. For more information, see https://svelte.dev/docs/kit/state-management#avoid-shared-state-on-the-server
+    at context_dev (/home/ed/i/mesh/node_modules/.pnpm/@sveltejs+kit@3.0.0-next.18_@sveltejs+vite-plugin-svelte@7.3.0_svelte@5.56.8_@typescrip_8cbd71102e2a2feb089ebbaadcc85fc6/node_modules/@sveltejs/kit/src/runtime/app/state/server.js:13:9)
+    at Object.get status (/home/ed/i/mesh/node_modules/.pnpm/@sveltejs+kit@3.0.0-next.18_@sveltejs+vite-plugin-svelte@7.3.0_svelte@5.56.8_@typescrip_8cbd71102e2a2feb089ebbaadcc85fc6/node_modules/@sveltejs/kit/src/runtime/app/state/server.js:43:17)
+    at eval (/home/ed/i/mesh/src/routes/+error.svelte:11:27)
+    at eval (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:411:4)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at Renderer.title (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:409:8)
+    at eval (/home/ed/i/mesh/src/routes/+error.svelte:7:8)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at eval (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/index.js:87:12)
+    at Renderer.child (/home/ed/i/mesh/node_modules/.pnpm/svelte@5.56.8_@typescript-eslint+types@8.67.0/node_modules/svelte/src/internal/server/renderer.js:214:18)
+TypeError: fetch failed
+    at Object.processResponse (/home/ed/i/mesh/node_modules/.pnpm/undici@7.29.0/node_modules/undici/lib/web/fetch/index.js:237:16)
+    at /home/ed/i/mesh/node_modules/.pnpm/undici@7.29.0/node_modules/undici/lib/web/fetch/index.js:1081:19
+    at node:internal/process/task_queues:149:7
+    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    at AsyncResource.runMicrotask (node:internal/process/task_queues:146:8)
+    at /home/ed/i/mesh/node_modules/.pnpm/undici@7.29.0/node_modules/undici/index.js:157:7
+    at async MessagePort.<anonymous> ([worker eval]:32:22)
+Error: read ECONNRESET
+TypeError: fetch failed
+    at Object.processResponse (/home/ed/i/mesh/node_modules/.pnpm/undici@7.29.0/node_modules/undici/lib/web/fetch/index.js:237:16)
+    at /home/ed/i/mesh/node_modules/.pnpm/undici@7.29.0/node_modules/undici/lib/web/fetch/index.js:1081:19
+    at node:internal/process/task_queues:149:7
+    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    at AsyncResource.runMicrotask (node:internal/process/task_queues:146:8)
+    at /home/ed/i/mesh/node_modules/.pnpm/undici@7.29.0/node_modules/undici/index.js:157:7
+    at async MessagePort.<anonymous> ([worker eval]:32:22)
+SocketError: other side closed
+    at Socket.onHttpSocketEnd (/home/ed/i/mesh/node_modules/.pnpm/undici@7.29.0/node_modules/undici/lib/dispatcher/client-h1.js:959:22)
+    at Socket.emit (node:events:531:35)
+[500] GET /
+[500] GET /

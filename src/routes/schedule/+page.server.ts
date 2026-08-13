@@ -1,30 +1,22 @@
-import { all, active_season } from '#lib/db';
+import { all, active_season, team_map } from '#lib/db';
+import { season_games, type Fixture } from '#lib/league';
 import type { PageServerLoad } from './$types';
 
-export type Fixture = {
-	i: string;
-	dt: number;
-	st: string;
-	ty: string;
-	hg: number | null;
-	ag: number | null;
-	ot: string;
-	h: string;
-	a: string;
-	hn: string;
-	an: string;
-};
+type Team = { i: string; n: string; ab: string };
 
-export const load: PageServerLoad = async ({ platform }) => {
+export const load: PageServerLoad = async ({ url, platform }) => {
 	const db = platform!.env.DB;
 	const se = await active_season(db);
-	if (!se) return { g: [] as Fixture[], se: null };
+	const teams = await all<Team>(db, 'select i, n, ab from t order by n');
+	if (!se) return { g: [] as Fixture[], se: null, teams, tm: {}, t: '' };
+	const pick = url.searchParams.get('t') ?? '';
+	const chosen = teams.find((x) => x.ab === pick);
+	const games = await season_games(db, se.i);
 	return {
-		g: await all<Fixture>(
-			db,
-			'select g.i as i, g.dt as dt, g.st as st, g.ty as ty, g.hg as hg, g.ag as ag, g.ot as ot, ht.ab as h, at.ab as a, ht.n as hn, at.n as an from g join t ht on ht.i = g.h join t at on at.i = g.a where g.s = ? order by g.dt asc',
-			se.i
-		),
-		se
+		se,
+		teams,
+		t: chosen?.ab ?? '',
+		tm: await team_map(db),
+		g: chosen ? games.filter((x) => x.h === chosen.i || x.a === chosen.i) : games
 	};
 };

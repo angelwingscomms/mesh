@@ -1,8 +1,10 @@
-import { all } from '#lib/db';
+import { active_season } from '#lib/db';
+import { standing_table, type Standing } from '#lib/league';
 import type { PageServerLoad } from './$types';
 
-type Team = { i: string; n: string; ab: string; d: string };
-
-export const load: PageServerLoad = async ({ platform }) => ({
-	t: await all<Team>(platform!.env.DB, 'select i, n, ab, d from t order by d, n')
-});
+export const load: PageServerLoad = async ({ platform }) => {
+	const db = platform!.env.DB;
+	const se = await active_season(db);
+	if (!se) return { t: [] as Standing[], se: null };
+	return { t: await standing_table(db, se.i), se };
+};

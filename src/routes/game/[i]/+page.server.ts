@@ -37,6 +37,9 @@ export type Line = {
 	sa: number | null;
 };
 
+const star_score = (l: Line) =>
+	l.sv === null ? l.gl * 2 + l.a + l.sog * 0.05 : (l.sv - (l.ga ?? 0) * 2) / 6;
+
 export const load: PageServerLoad = async ({ params, platform }) => {
 	const db = platform!.env.DB;
 	const g = await one<Game>(db, 'select * from g where i = ?', params.i);
@@ -52,6 +55,10 @@ export const load: PageServerLoad = async ({ params, platform }) => {
 		g,
 		h,
 		a,
-		s: { h: lines.filter((l) => l.ti === g.h), a: lines.filter((l) => l.ti === g.a) }
+		s: { h: lines.filter((l) => l.ti === g.h), a: lines.filter((l) => l.ti === g.a) },
+		stars:
+			g.st === 'f'
+				? [...lines].sort((x, y) => star_score(y) - star_score(x)).slice(0, 3)
+				: ([] as Line[])
 	};
 };

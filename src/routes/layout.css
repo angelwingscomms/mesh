@@ -1,21 +1,49 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:is(.dark *));
+@font-face {
+	font-family: 'Archivo';
+	src: url('/fonts/archivo.woff2') format('woff2-variations');
+	font-weight: 100 900;
+	font-stretch: 62% 125%;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Newsreader';
+	src: url('/fonts/newsreader.woff2') format('woff2-variations');
+	font-weight: 200 800;
+	font-style: normal;
+	font-display: swap;
+}
 
 @theme {
-	--color-ice: #f6f8fb;
-	--color-board: #ffffff;
-	--color-line: #dde4ee;
-	--color-ink: #0d1b2a;
-	--color-mute: #5b6b7f;
-	--color-brand: #123a6b;
-	--color-brand-2: #1d5fa8;
+	--color-ice: #e8edee;
+	--color-board: #f4f7f7;
+	--color-line: #c9d2d4;
+	--color-ink: #0c1214;
+	--color-ink-2: #182226;
+	--color-mute: #61706f;
+	--color-brand: #1b4f8f;
+	--color-brand-2: #2e6fbf;
 	--color-accent: #c8102e;
-	--color-good: #0f8a4f;
-	--color-bad: #b3261e;
-	--radius-card: 0.75rem;
+	--color-good: #1b4f8f;
+	--color-bad: #c8102e;
+
+	--font-sans: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+	--font-prose: 'Newsreader', ui-serif, georgia, serif;
+
+	--radius-card: 0px;
+	--radius-rink: 2.5rem;
+
 	--spacing-gut: 1.25rem;
-	--font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', roboto, sans-serif;
+
+	--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+	--ease-inout: cubic-bezier(0.83, 0, 0.17, 1);
+
+	--text-display: clamp(44px, 10.89vw + 3.16px, 160px);
+	--text-title: clamp(30px, 3.76vw + 15.91px, 70px);
+	--text-head: clamp(22px, 1.69vw + 15.66px, 40px);
 }
 
 @layer base {
@@ -23,5 +51,367 @@
 		background-color: var(--color-ice);
 		color: var(--color-ink);
 		font-family: var(--font-sans);
+		-webkit-font-smoothing: antialiased;
+		scrollbar-color: var(--color-line) var(--color-ice);
+	}
+
+	body {
+		font-size: 16px;
+		line-height: 1.6;
+	}
+
+	::selection {
+		background: var(--color-brand);
+		color: var(--color-board);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-brand);
+		outline-offset: 3px;
+	}
+
+	h1,
+	h2,
+	h3 {
+		text-wrap: balance;
+	}
+
+	table {
+		font-variant-numeric: tabular-nums;
+	}
+
+	@media (scripting: enabled) {
+		[data-reveal] {
+			opacity: 0;
+			transform: translateY(14px);
+			transition:
+				opacity 0.9s var(--ease-out),
+				transform 0.9s var(--ease-out);
+		}
+
+		[data-reveal][data-shown] {
+			opacity: 1;
+			transform: none;
+		}
+	}
+}
+
+@layer components {
+	/* the three type registers */
+	.display {
+		font-size: var(--text-display);
+		font-stretch: 112%;
+		font-weight: 800;
+		line-height: 0.86;
+		letter-spacing: -0.035em;
+	}
+
+	.title {
+		font-size: var(--text-title);
+		font-stretch: 108%;
+		font-weight: 700;
+		line-height: 0.95;
+		letter-spacing: -0.025em;
+	}
+
+	.head {
+		font-size: var(--text-head);
+		font-stretch: 105%;
+		font-weight: 700;
+		line-height: 1.05;
+		letter-spacing: -0.015em;
+	}
+
+	.label {
+		font-size: 11px;
+		font-weight: 600;
+		line-height: 1;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		color: var(--color-mute);
+	}
+
+	.numeral {
+		font-stretch: 88%;
+		font-weight: 800;
+		font-variant-numeric: tabular-nums;
+		letter-spacing: -0.02em;
+	}
+
+	.prose-voice {
+		font-family: var(--font-prose);
+		font-size: 19px;
+		line-height: 1.65;
+		letter-spacing: 0.005em;
+		max-width: 62ch;
+	}
+
+	/* surfaces — the boards are flat, so nothing is rounded */
+	.card {
+		background: var(--color-board);
+		border: 1px solid var(--color-line);
+		padding: 1.25rem;
+	}
+
+	.stands {
+		background: var(--color-ink);
+		color: var(--color-board);
+	}
+
+	/* a section head sitting on its own blue line */
+	.rule {
+		display: flex;
+		align-items: baseline;
+		gap: 0.75rem;
+		border-top: 1px solid var(--color-ink);
+		padding-top: 0.625rem;
+	}
+
+	.sheet {
+		overflow-x: auto;
+		background: var(--color-board);
+		border: 1px solid var(--color-line);
+	}
+
+	.data {
+		width: 100%;
+		font-size: 14px;
+		border-collapse: collapse;
+	}
+
+	.data thead th {
+		font-size: 10px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--color-mute);
+		padding: 0.75rem 0.5rem;
+		text-align: center;
+		white-space: nowrap;
+		border-bottom: 1px solid var(--color-ink);
+	}
+
+	.data thead th:first-child,
+	.data td:first-child {
+		text-align: left;
+		padding-left: 1rem;
+	}
+
+	.data thead th:last-child,
+	.data td:last-child {
+		padding-right: 1rem;
+	}
+
+	.data td {
+		padding: 0.6rem 0.5rem;
+		text-align: center;
+		white-space: nowrap;
+		border-bottom: 1px solid var(--color-line);
+	}
+
+	.data tbody tr:last-child td {
+		border-bottom: 0;
+	}
+
+	.data tbody tr {
+		transition: background-color 0.28s var(--ease-out);
+	}
+
+	.data tbody tr:hover {
+		background: var(--color-ice);
+	}
+
+	/* the cut — a blade stroke that enters from the left and leaves to the right */
+	.cut {
+		position: relative;
+		display: inline-block;
+	}
+
+	.cut::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -3px;
+		height: 1px;
+		background: currentColor;
+		transform: scaleX(0);
+		transform-origin: right;
+		transition: transform 0.42s var(--ease-out);
+	}
+
+	.cut:hover::after,
+	.cut:focus-visible::after,
+	.cut[aria-current='page']::after {
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+
+	.cut[aria-current='page'] {
+		color: var(--color-ink);
+	}
+
+	/* controls */
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		min-height: 44px;
+		padding: 0 1.1rem;
+		background: var(--color-ink);
+		color: var(--color-board);
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		border: 1px solid var(--color-ink);
+		transition:
+			background-color 0.28s var(--ease-out),
+			color 0.28s var(--ease-out);
+	}
+
+	.btn:hover {
+		background: var(--color-brand);
+		border-color: var(--color-brand);
+	}
+
+	.btn-ghost {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		min-height: 44px;
+		padding: 0 1.1rem;
+		background: transparent;
+		color: var(--color-ink);
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		border: 1px solid var(--color-line);
+		transition:
+			border-color 0.28s var(--ease-out),
+			color 0.28s var(--ease-out);
+	}
+
+	.btn-ghost:hover {
+		border-color: var(--color-ink);
+	}
+
+	.btn-quiet {
+		font-size: 13px;
+		font-weight: 600;
+		color: var(--color-mute);
+		min-height: 44px;
+		transition: color 0.28s var(--ease-out);
+	}
+
+	.btn-quiet:hover {
+		color: var(--color-accent);
+	}
+
+	.field {
+		min-height: 44px;
+		padding: 0.5rem 0.75rem;
+		background: var(--color-board);
+		border: 1px solid var(--color-line);
+		font-size: 14px;
+		color: var(--color-ink);
+		transition: border-color 0.28s var(--ease-out);
+	}
+
+	.field:hover {
+		border-color: var(--color-mute);
+	}
+
+	select.field {
+		appearance: none;
+		padding-right: 1.75rem;
+		background-image:
+			linear-gradient(45deg, transparent 50%, var(--color-mute) 50%),
+			linear-gradient(135deg, var(--color-mute) 50%, transparent 50%);
+		background-position:
+			calc(100% - 15px) 50%,
+			calc(100% - 10px) 50%;
+		background-size:
+			5px 5px,
+			5px 5px;
+		background-repeat: no-repeat;
+	}
+
+	/* ice is never sterile — it is scuffed */
+	.grain {
+		position: fixed;
+		inset: 0;
+		z-index: 60;
+		pointer-events: none;
+		opacity: 0.035;
+		mix-blend-mode: multiply;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+	}
+}
+
+/* the cut draws itself, the way a blade lays a line down */
+.trace-cut {
+	stroke-dasharray: 1;
+	stroke-dashoffset: 1;
+	animation: draw 1.1s var(--ease-out) 0.1s both;
+}
+
+.trace-spray {
+	opacity: 0;
+	animation: spray 0.6s var(--ease-out) 0.9s both;
+}
+
+.trace-head {
+	opacity: 0;
+	animation: spray 0.5s var(--ease-out) 1.1s both;
+}
+
+@keyframes draw {
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes spray {
+	to {
+		opacity: 0.9;
+	}
+}
+
+/* the resurfacing pass between pages */
+::view-transition-old(root) {
+	animation: resurface-out 380ms var(--ease-inout) both;
+}
+
+::view-transition-new(root) {
+	animation: resurface-in 520ms var(--ease-inout) both;
+}
+
+@keyframes resurface-out {
+	to {
+		clip-path: inset(0 0 0 100%);
+	}
+}
+
+@keyframes resurface-in {
+	from {
+		clip-path: inset(0 100% 0 0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation: none;
 	}
 }
